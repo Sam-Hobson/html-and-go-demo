@@ -5,9 +5,18 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
+
+        <script src="https://unpkg.com/htmx.org@2.0.0"></script>
     </head>
     <body>
-        Count {{ .Count }}
+        <div id="count">
+            {{ template "count" . }}
+        </div>
+        <button hx-target="#count" hx-post="/count">Count</button>
     </body>
 </html>
+{{ end }}
+
+{{ block "count" . }}
+    Count {{ .Count }}
 {{ end }}
